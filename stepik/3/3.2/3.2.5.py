@@ -1,9 +1,7 @@
-#не робит
 import re
 import sys
-pattern = r"human"
-repl = "computer"
+pattern = r".{0,}\b(\w+)\1\b.{0,}"
 for line in sys.stdin:
     line = line.rstrip()
-    re.sub(pattern, repl, line)
-    print(line)
+    if re.fullmatch(pattern, line) is not None:
+        print(line)
